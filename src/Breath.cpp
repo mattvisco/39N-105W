@@ -11,7 +11,7 @@
 void Breath::reset() {
     animating = true;
     blur.begin();
-    ofClear(0);
+    ofBackground(0);
     blur.end();
     containers.clear();
     breathing = false;

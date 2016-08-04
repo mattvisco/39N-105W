@@ -43,14 +43,14 @@ class ofApp : public ofBaseApp{
     
     Breath breath;
     
-    ofFbo fadeFbo;
+    ofxBlur fadeBlur;
     bool fading;
     int fadeColor;
     
     ofxBlur mask;
     ofFbo compositeImage;
     
-    int compositeTotal = 29;//29;
+    int compositeTotal = 29;
     int textureTotal = 15;
     vector<ofDirectory> directories;
     int currImgIndex;

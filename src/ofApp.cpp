@@ -22,7 +22,7 @@ void ofApp::setup(){
     mask = breath.blur;
     avg1.allocate(width, height);
     avg2.allocate(width, height);
-    fadeFbo.allocate(width, height);
+    fadeBlur.setup(width, height,10, .2, 4);
     compositeImage.allocate(width, height);
     
     fading = false;
@@ -66,7 +66,7 @@ void ofApp::makeDirectories() {
 void ofApp::setMask() {
     float time = ofGetElapsedTimef();
     if(!breath.breathing) {
-        breath.setBreathe( ofPoint(width / 2, height/2),
+        breath.setBreathe( ofPoint(ofRandom(width / 4, width * 3/4), ofRandom(height / 4, height * 3/4)),
                           0.005,
                           0.01, 10, height/2 );
     }
@@ -75,14 +75,16 @@ void ofApp::setMask() {
 
 void ofApp::fade() {
     if(fadeColor == 256) {
+        fadeBlur.begin();
+        ofBackground(0);
+        fadeBlur.end();
         fading = false;
         currImgIndex++;
         currImgIndex %= images.size();
     } else {
-        fadeFbo.begin();
-        ofClear(0);
+        fadeBlur.begin();
         ofBackground(fadeColor);
-        fadeFbo.end();
+        fadeBlur.end();
         fadeColor++;
     }
 }
@@ -90,6 +92,8 @@ void ofApp::fade() {
 void ofApp::initFade() {
     fadeColor = 0;
     fading = true;
+//    currImgIndex++;
+//    currImgIndex %= images.size();
 }
 
 void ofApp::makeAverages(ofFbo& fbo, ofShader& shader, int shift, bool focus) {
@@ -99,15 +103,17 @@ void ofApp::makeAverages(ofFbo& fbo, ofShader& shader, int shift, bool focus) {
     shader.setUniform1f("imgTotal", compositeTotal);
     shader.setUniform1f("focus", focus);
     shader.setUniform1f("fading", fading);
-    if(fading) shader.setUniformTexture("mask", fadeFbo.getTexture(), 0);
-    else shader.setUniformTexture("mask", mask.getTextureReference(), 0);
+//    if(fading) shader.setUniformTexture("mask", fadeFbo.getTextureReference(), 0);
+//    else
+    shader.setUniformTexture("mask", mask.getTextureReference(), 0);
     for(int i = 0; i < textureTotal; i++) {
         int index = shift+i;
         index %= images.size();
         shader.setUniformTexture("tex" + std::to_string(i+1), images[index], i+1);
     }
-    if(fading) fadeFbo.draw(0,0);
-    else mask.draw();
+//    if(fading) fadeFbo.draw();
+//    else
+    mask.draw();
     shader.end();
     fbo.end();
 }
@@ -126,8 +132,13 @@ void ofApp::makeComposite(ofFbo fbo1, ofFbo fbo2) {
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    if(fading) fade();
-    else setMask();
+    if(fading) {
+        fade();
+        mask = fadeBlur;
+    } else {
+        setMask();
+        mask = breath.blur;
+    }
     makeAverages(avg1, avgShader, currImgIndex, true);
     makeAverages(avg2, avgShader2, currImgIndex + 15, false);
     makeComposite(avg1, avg2);
