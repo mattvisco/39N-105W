@@ -7,13 +7,9 @@ void ofApp::setup(){
     toggleInfo = true;
     maskOn = false;
     
-//    width = 500;
-//    height = 500;
-    
-    // TODO: figure out the best image size Ñ this is stretched
-    // 800 x 1207?
-    width = 1207;//1280;//1545;
-    height = 800;//1024;
+    // TODO: figure out the best image size
+    width = 1207; //1545;
+    height = 800; //1024;
     
     avgShader.load("", "average.frag");
     avgShader2.load("", "average.frag");
@@ -48,23 +44,23 @@ void ofApp::loadImages() {
 
 void ofApp::makeDirectories() {
     // Match dirNames size with for loop Ñ I was lazy and didn't do variable sheeit
-//    string dirNames[11] = {"seqouia", "alps", "desolation", "dv_bw", "henry", "iva_bw", "iva_color",
-//        "lost_bw", "lost_color", "ostrander", "saddle"};
-//    for(int i = 0; i < 11; i++) {
-//        ofDirectory dir;
-//        dir.sort();
-//        dir.listDir(dirNames[i]);
-//        directories.push_back(dir);
-//    }
-    
-    // TESTING Ñ if need speed
-    string dirNames[1] = {"seqouia"};
-    for(int i = 0; i < 1; i++) {
+    string dirNames[11] = {"seqouia", "alps", "desolation", "dv_bw", "henry", "iva_bw", "iva_color",
+        "lost_bw", "lost_color", "ostrander", "saddle"};
+    for(int i = 0; i < 11; i++) {
         ofDirectory dir;
         dir.sort();
         dir.listDir(dirNames[i]);
         directories.push_back(dir);
     }
+    
+    // TESTING Ñ if need speed
+//    string dirNames[1] = {"seqouia"};
+//    for(int i = 0; i < 1; i++) {
+//        ofDirectory dir;
+//        dir.sort();
+//        dir.listDir(dirNames[i]);
+//        directories.push_back(dir);
+//    }
 }
 
 void ofApp::setMask() {
@@ -164,61 +160,4 @@ void ofApp::keyPressed(int key){
 
 void ofApp::onBreathEnd(float &tEnded) {
     initFade();
-}
-
-
-
-
-
-
-
-
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseMoved(int x, int y ){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseDragged(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mousePressed(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseReleased(int x, int y, int button){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
 }

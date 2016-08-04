@@ -19,7 +19,6 @@ struct Particle {
 
 struct Container {
     float radius;
-//    vector<ofPoint> particles;
     vector<Particle> particles;
     float curBrightness;
     float maxBrightness;
@@ -34,14 +33,10 @@ private:
     float WAITTIME = 5;
     
     ofPoint origin;
-    int starterParticles;
-    float shrinkStart;
     float curRadius;
-    float curBrightness; // TODO: consider removing this var
+    float curBrightness;
     float radiusGrow;
-    float radiusShrink;
     float brightGrow;
-//    float brightShrink;
     float rateGrow;
     float rateShrink;
     float density;
@@ -54,7 +49,6 @@ private:
     void reset();
     void grow();
     void shrink();
-    
     
     
 public:
