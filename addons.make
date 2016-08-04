@@ -1,0 +1,3 @@
+ofxBlur
+ofxFX
+ofxFluid
