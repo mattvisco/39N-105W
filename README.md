@@ -1,1 +1,3 @@
-# 32-N-100-W
+## 32°  N, 100° W (878 m)
+
+Every breath is a step in time, as we breathe our memories blur and present becomes the past. It is our breath that drives us to capture moments, our breath reminds us of this ever present motion that we attempt to fight by holding onto frames of time. It is also breath that can allow for deep reflection, by paying attention to our breath our memories can come back into focus — we can gain some control over time. 32°N, 100°W attempts to use breath as a lens to explore the past. Each image in this piece is composed by averaging the images taken during a specific trip into the backcountry. These composites represent imagery more akin to memory — faint and ghostly representations of color, texture, & figure. As you watch these composites breath peels through them and reveals the images that make the composition. It is breath that allows for these moments to come back into focus as it was breath that directed the capture of them.
