@@ -6,10 +6,13 @@ Every breath is a step in time, as we breathe our memories blur and present beco
 
 Once you have cloned this repository:
 
+
 1. Update the project with openFrameworks projectGenerator
 2. Press run!
 
+
 To change images:
+
 1. Go into bin/data & add a folder for your images
 2. Places images into this folder (should be at least 30 or code may not run)
 3. If you have multiple albums, make multiple folders
